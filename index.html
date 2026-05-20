@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-adsense-account" content="ca-pub-2868705306344995">
+  <meta name="description" content="기분, 조리 시간, 식단에 맞춰 저녁 메뉴를 추천하고 장보기 목록, 조리 팁, 식단 운영 가이드를 제공하는 한국어 저녁 식사 도우미입니다.">
   <title>오늘 저녁 뭐 먹지?</title>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2868705306344995"
      crossorigin="anonymous"></script>
@@ -43,6 +44,58 @@
 
     button {
       cursor: pointer;
+    }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 250, 242, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav-inner {
+      width: min(1180px, calc(100% - 36px));
+      min-height: 58px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand-link {
+      color: var(--ink);
+      font-weight: 900;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 4px;
+    }
+
+    .nav-links a {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0 10px;
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      background: #fff0e8;
+      color: var(--brand-dark);
+      outline: 0;
     }
 
     .hero {
@@ -353,6 +406,97 @@
       padding: 0 0 72px;
     }
 
+    .guide,
+    .policy,
+    .about {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 0 0 62px;
+    }
+
+    .section-head {
+      max-width: 780px;
+      margin-bottom: 18px;
+    }
+
+    .section-head p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .guide-card,
+    .policy-panel,
+    .about-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      box-shadow: 0 10px 28px rgba(34, 24, 13, 0.08);
+    }
+
+    .guide-card {
+      padding: 20px;
+    }
+
+    .guide-card p {
+      color: var(--muted);
+      line-height: 1.68;
+      margin: 12px 0 0;
+    }
+
+    .guide-card ul {
+      margin-top: 12px;
+    }
+
+    .about-panel,
+    .policy-panel {
+      padding: 26px;
+    }
+
+    .about-grid,
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .note-block {
+      border-left: 4px solid var(--brand);
+      background: #fff8e8;
+      padding: 14px 16px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .site-footer {
+      background: #1f1b17;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .footer-inner {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 28px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      line-height: 1.6;
+      font-size: 0.92rem;
+    }
+
+    .footer-inner a {
+      color: white;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
     .comments-panel {
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -474,7 +618,10 @@
 
       .workspace,
       .content-grid,
-      .partnership-panel {
+      .partnership-panel,
+      .guide-grid,
+      .about-grid,
+      .policy-grid {
         grid-template-columns: 1fr;
       }
 
@@ -510,8 +657,23 @@
       .workspace,
       .alternatives,
       .partnership,
-      .comments {
+      .comments,
+      .guide,
+      .policy,
+      .about,
+      .nav-inner,
+      .footer-inner {
         width: min(100% - 24px, 1180px);
+      }
+
+      .nav-inner,
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
       }
 
       .hero-inner {
@@ -538,13 +700,28 @@
       .section,
       .controls,
       .partnership-panel,
-      .comments-panel {
+      .comments-panel,
+      .about-panel,
+      .policy-panel {
         padding: 20px;
       }
     }
   </style>
 </head>
 <body>
+  <nav class="site-nav" aria-label="주요 메뉴">
+    <div class="nav-inner">
+      <a class="brand-link" href="#">오늘 저녁 뭐 먹지?</a>
+      <div class="nav-links">
+        <a href="#recommend">메뉴 추천</a>
+        <a href="#guide">식단 가이드</a>
+        <a href="#about">소개</a>
+        <a href="#policy">개인정보처리방침</a>
+        <a href="#partnershipTitle">문의</a>
+      </div>
+    </div>
+  </nav>
+
   <header class="hero">
     <div class="hero-inner">
       <p class="eyebrow">저녁 메뉴 추천과 레시피를 한 번에</p>
@@ -554,7 +731,7 @@
   </header>
 
   <main>
-    <section class="workspace" aria-label="메뉴 추천 도구">
+    <section class="workspace" id="recommend" aria-label="메뉴 추천 도구">
       <aside class="controls">
         <h2>오늘의 조건</h2>
 
@@ -647,6 +824,62 @@
       </article>
     </section>
 
+    <section class="guide" id="guide" aria-labelledby="guideTitle">
+      <div class="section-head">
+        <p class="eyebrow" style="color: var(--gold); margin-bottom: 8px;">저녁 식단 가이드</p>
+        <h2 id="guideTitle">추천 결과를 실제 저녁상으로 바꾸는 방법</h2>
+        <p>이 사이트는 단순히 메뉴 이름만 고르는 도구가 아니라, 집에 있는 시간과 재료를 기준으로 실행 가능한 저녁 식사를 설계하는 데 초점을 둡니다.</p>
+      </div>
+
+      <div class="guide-grid">
+        <article class="guide-card">
+          <h3>15분 저녁을 고를 때</h3>
+          <p>배가 많이 고픈 날에는 조리법보다 정리 시간이 더 중요합니다. 팬 하나로 끝나는 볶음밥, 비빔면, 덮밥류를 먼저 고르면 설거지 부담까지 줄일 수 있습니다.</p>
+          <ul>
+            <li>단백질은 계란, 참치, 두부처럼 바로 쓸 수 있는 재료를 우선합니다.</li>
+            <li>김치, 대파, 양파처럼 향이 강한 재료를 쓰면 짧은 조리에도 맛이 납니다.</li>
+            <li>국물 요리는 멸치육수팩이나 쌀뜨물이 있을 때만 선택합니다.</li>
+          </ul>
+        </article>
+
+        <article class="guide-card">
+          <h3>든든한 한 끼를 구성할 때</h3>
+          <p>포만감은 양보다 균형에서 나옵니다. 밥이나 면 같은 탄수화물에 단백질, 따뜻한 국물, 산뜻한 채소 반찬을 하나씩 더하면 과식하지 않아도 만족도가 높습니다.</p>
+          <ul>
+            <li>고기 메뉴에는 쌈채소나 오이무침처럼 신선한 반찬을 곁들입니다.</li>
+            <li>찌개를 끓일 때는 두부와 버섯을 넣어 식감을 보강합니다.</li>
+            <li>매운 메뉴에는 계란찜이나 요구르트 같은 부드러운 요소를 더합니다.</li>
+          </ul>
+        </article>
+
+        <article class="guide-card">
+          <h3>재료 낭비를 줄이는 기준</h3>
+          <p>저녁 메뉴는 냉장고에 남은 재료를 먼저 소진하는 방향이 좋습니다. 같은 채소라도 써는 방식과 양념을 바꾸면 찌개, 볶음, 비빔밥에 모두 활용할 수 있습니다.</p>
+          <ul>
+            <li>시들기 쉬운 잎채소는 비빔밥이나 곁들임 샐러드로 먼저 사용합니다.</li>
+            <li>양파, 대파, 버섯은 대부분의 한식 메뉴에 공통으로 들어갑니다.</li>
+            <li>남은 밥은 볶음밥, 주먹밥, 죽 순서로 활용도가 높습니다.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="aboutTitle">
+      <div class="about-panel">
+        <p class="eyebrow" style="color: var(--gold); margin-bottom: 8px;">사이트 소개</p>
+        <h2 id="aboutTitle">사용자에게 필요한 저녁 정보를 직접 정리합니다</h2>
+        <div class="about-grid">
+          <div>
+            <p class="partnership-copy">오늘 저녁 뭐 먹지?는 한국 가정식과 간단한 한 그릇 메뉴를 중심으로, 조리 시간과 식단 취향에 맞는 선택지를 제공합니다. 각 추천에는 장보기 목록과 조리 순서를 함께 넣어 사용자가 바로 실행할 수 있도록 구성했습니다.</p>
+            <p class="partnership-copy">추천 데이터는 메뉴명만 나열하지 않고 조리 난이도, 식단 분류, 대체 후보, 활용 팁을 함께 보여주도록 설계했습니다. 앞으로 계절 재료, 남은 재료 활용법, 도시락으로 이어 먹는 방법을 계속 보강할 예정입니다.</p>
+          </div>
+          <div class="note-block">
+            운영 목적: 저녁 메뉴 선택 시간을 줄이고, 집밥을 준비하는 사용자가 과장된 광고나 얇은 정보 없이 필요한 내용을 빠르게 확인할 수 있게 돕습니다. 문의는 아래 제휴 문의 양식을 통해 받을 수 있습니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="partnership" aria-labelledby="partnershipTitle">
       <div class="partnership-panel">
         <div>
@@ -705,7 +938,44 @@
         <div id="disqus_thread"></div>
       </div>
     </section>
+
+    <section class="policy" id="policy" aria-labelledby="policyTitle">
+      <div class="policy-panel">
+        <p class="eyebrow" style="color: var(--gold); margin-bottom: 8px;">개인정보처리방침</p>
+        <h2 id="policyTitle">개인정보와 광고 안내</h2>
+        <div class="policy-grid">
+          <div>
+            <h3>수집하는 정보</h3>
+            <p class="partnership-copy">메뉴 추천 기능은 브라우저 안에서 동작하며 이름, 이메일, 위치정보를 요구하지 않습니다. 제휴 문의 양식을 제출하는 경우 답변을 위해 사용자가 입력한 이름, 회사명, 이메일, 연락처, 문의 내용이 Formspree를 통해 전달될 수 있습니다.</p>
+          </div>
+          <div>
+            <h3>광고와 쿠키</h3>
+            <p class="partnership-copy">이 사이트는 Google AdSense를 사용할 수 있으며, Google 및 제3자 광고 사업자는 쿠키를 사용해 사용자에게 적합한 광고를 표시할 수 있습니다. 사용자는 브라우저 설정이나 Google 광고 설정에서 맞춤 광고를 관리할 수 있습니다.</p>
+          </div>
+          <div>
+            <h3>외부 서비스</h3>
+            <p class="partnership-copy">댓글 기능은 Disqus를 통해 제공되며, 댓글 작성 시 Disqus의 개인정보 처리 방식이 적용될 수 있습니다. 외부 서비스 사용 전 해당 서비스의 정책을 확인해 주세요.</p>
+          </div>
+          <div>
+            <h3>문의와 변경</h3>
+            <p class="partnership-copy">개인정보 관련 문의는 제휴 문의 양식으로 접수할 수 있습니다. 운영 정책이나 광고 설정이 변경되면 이 영역에 최신 내용을 반영합니다. 최종 업데이트: 2026년 5월 20일.</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>오늘 저녁 뭐 먹지?</strong><br>
+        한국어 저녁 메뉴 추천, 장보기 목록, 집밥 운영 가이드
+      </div>
+      <div>
+        <a href="#policy">개인정보처리방침</a> · <a href="#partnershipTitle">문의</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
     const recipes = [

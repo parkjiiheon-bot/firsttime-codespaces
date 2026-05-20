@@ -344,6 +344,24 @@
       padding: 0 0 62px;
     }
 
+    .comments {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 0 0 72px;
+    }
+
+    .comments-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      padding: 26px;
+      box-shadow: 0 10px 28px rgba(34, 24, 13, 0.08);
+    }
+
+    #disqus_thread {
+      margin-top: 18px;
+    }
+
     .partnership-panel {
       display: grid;
       grid-template-columns: minmax(240px, 0.82fr) minmax(320px, 1.18fr);
@@ -488,7 +506,8 @@
       .hero-inner,
       .workspace,
       .alternatives,
-      .partnership {
+      .partnership,
+      .comments {
         width: min(100% - 24px, 1180px);
       }
 
@@ -515,7 +534,8 @@
       .result-head,
       .section,
       .controls,
-      .partnership-panel {
+      .partnership-panel,
+      .comments-panel {
         padding: 20px;
       }
     }
@@ -673,6 +693,14 @@
         </div>
       </div>
       <div class="alt-grid" id="alternatives"></div>
+    </section>
+
+    <section class="comments" aria-labelledby="commentsTitle">
+      <div class="comments-panel">
+        <p class="eyebrow" style="color: var(--gold); margin-bottom: 8px;">댓글</p>
+        <h2 id="commentsTitle">의견 남기기</h2>
+        <div id="disqus_thread"></div>
+      </div>
     </section>
   </main>
 
@@ -921,5 +949,20 @@
 
     render();
   </script>
+
+  <script>
+    var disqus_config = function () {
+      this.page.url = window.location.href;
+      this.page.identifier = "dinner-recommendation";
+    };
+
+    (function() {
+      var d = document, s = d.createElement("script");
+      s.src = "https://didacticcod.disqus.com/embed.js";
+      s.setAttribute("data-timestamp", +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </body>
 </html>
